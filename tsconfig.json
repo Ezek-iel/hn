@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    "rootDir": "./src",
     "inlineSourceMap": true,
     "inlineSources": true,
     "module": "ESNext",
@@ -11,6 +11,7 @@
     "importHelpers": true,
     "isolatedModules": true,
     "strictNullChecks": true,
+    "noEmitOnError": true,
     "lib": [
       "DOM",
       "ES5",
