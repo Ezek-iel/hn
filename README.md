@@ -22,3 +22,5 @@ npm install
 npm run dev
 ```
 This will start the development server and you can start writing code.
+
+This project is under the [MIT License](LICENSE)

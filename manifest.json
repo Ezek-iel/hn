@@ -1,11 +1,10 @@
 {
 	"id": "obsidian-hn",
 	"name": "Obsidian Hacker News",
-	"version": "1.0.0",
+	"version": "0.1.0",
 	"minAppVersion": "0.15.0",
 	"description": "View all Latest hacker news post via the Hacker News API",
 	"author": "Ezek-iel",
 	"authorUrl": "https://www.github.com/Ezek-iel",
-	"fundingUrl": "https://obsidian.md/pricing",
 	"isDesktopOnly": false
 }
