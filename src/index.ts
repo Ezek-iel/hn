@@ -1,5 +1,5 @@
 import { ItemView, WorkspaceLeaf, Plugin } from "obsidian"
-import { fetchFromURL } from "./fetch"
+import { createLoader, error, getPosts } from "./utils"
 
 export const VIEW_TYPE = 'posts_view'
 
@@ -20,18 +20,23 @@ export class PostsView extends ItemView {
 	}
 
 	protected async onOpen(): Promise<void> {
-		const container = this.containerEl.children[1]
-		container.empty()
 
-		const box = container.createDiv({ cls: "bg" })
-		box.createEl('div', { cls: 'loader' })
+		async function refresh(container: HTMLElement) {
+			container.empty()
+			createLoader(container)
+			try {
+				await getPosts(container)
+			}
+			catch (e){
+				console.error(e)
+				error(container)
+			}
+			const refreshButton = container.createEl('button', { text: 'Refresh'})
+			refreshButton.addEventListener('click', () => {refresh(container)})
+		}
+		const container = this.contentEl
 
-		const data = await fetchFromURL()
-
-		container.empty()
-		data.blogs.forEach(blog => {
-			container.createEl('h4', { text: blog.title })
-		});
+		refresh(container)
 
 	}
 
@@ -39,7 +44,6 @@ export class PostsView extends ItemView {
 		// Nothing to clean up
 	}
 }
-
 export default class HNPlugin extends Plugin {
 	async onload(): Promise<void> {
 		this.registerView(VIEW_TYPE, (leaf) => new PostsView(leaf))

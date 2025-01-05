@@ -8,13 +8,22 @@ If your plugin does not need CSS, delete this file.
 */
 
 .box {
-    background-color: purple;
-    padding: 1rem;
+    border: 1px solid var(--background-modifier-border);
+    padding: 10px;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-radius: var(--radius-m);
+    max-width: 600px;
+    background-color: var(--background-primary-alt)
+}
+
+.author {
+    color: var(--text-muted);
 }
 
 .loader {
     border: 8px solid #f3f3f3;
-    border-top: 8px solid #3498db;
+    border-top: 8px solid hsl(var(--accent-h), var(--accent-s), var(--accent-l));
     border-radius: 50%;
     width: 60px;
     height: 60px;
@@ -31,8 +40,16 @@ If your plugin does not need CSS, delete this file.
     }
 }
 
-.bg{
+.bg {
     display: flex;
     justify-content: center;
     width: 100%;
+}
+
+.error {
+    color: var(--color-red);
+    background-color: rgba(var(--color-red-rgb), 0.2);
+    padding: 1rem;
+    max-width: 600px;
+    border-radius: var(--radius-m);
 }
